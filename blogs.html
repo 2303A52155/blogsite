@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technical Content Intern · Portfolio</title>
+  <meta name="description" content="Portfolio website for a Technical Content Internship: writing samples, docs, tutorials, code snippets, and contact." />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #111833;
+      --text: #e5e7eb;
+      --muted: #a7b0c4;
+      --brand: #7c3aed;
+      --brand-2: #22d3ee;
+      --ring: rgba(124, 58, 237, .35);
+      --card: linear-gradient(135deg, rgba(124,58,237,.15), rgba(34,211,238,.08));
+    }
+    @media (prefers-color-scheme: light) {
+      :root{
+        --bg:#f8fafc; --panel:#ffffff; --text:#0b1020; --muted:#475569; --brand:#6d28d9; --brand-2:#0891b2; --ring:rgba(99,102,241,.35); --card:linear-gradient(135deg, rgba(99,102,241,.10), rgba(34,197,94,.08));
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1000px 600px at 80% -20%, rgba(124,58,237,.25), transparent 55%), radial-gradient(800px 500px at -10% 10%, rgba(34,211,238,.25), transparent 55%), var(--bg);color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin-inline:auto;padding:24px}
+    header{position:sticky;top:0;background:rgba(11,16,32,.6);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid rgba(148,163,184,.15);z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:white;box-shadow:0 8px 30px rgba(124,58,237,.4)}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:10px 12px;border-radius:12px}
+    .menu a:hover{background:rgba(148,163,184,.12)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:linear-gradient(135deg, var(--brand), var(--brand-2));color:white;font-weight:600;border:0;cursor:pointer;box-shadow:0 10px 20px rgba(124,58,237,.35)}
+    .btn:focus{outline:3px solid var(--ring);outline-offset:2px}
+
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding-top:28px}
+    .hero h1{font-size:clamp(28px, 4.3vw, 48px);line-height:1.05;margin:0 0 12px}
+    .hero p{margin:0;color:var(--muted);font-size:clamp(14px,1.7vw,18px)}
+    .hero .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:var(--panel);border:1px solid rgba(148,163,184,.14);border-radius:20px;padding:18px}
+    .stat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:rgba(148,163,184,.12);font-size:13px}
+
+    section{margin-top:42px}
+    h2{font-size:clamp(20px,3vw,28px);margin:0 0 14px}
+
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .tile{border-radius:20px;padding:16px;background:var(--panel);border:1px solid rgba(148,163,184,.14);background-image:var(--card)}
+    .tile h3{margin:0 0 8px;font-size:18px}
+    .tile p{margin:0;color:var(--muted);font-size:14px}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(148,163,184,.15);border:1px dashed rgba(148,163,184,.25)}
+
+    .list{display:grid;gap:12px}
+    .list a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:14px;border:1px solid rgba(148,163,184,.14);background:var(--panel)}
+
+    .footer{margin:40px 0 24px;color:var(--muted);font-size:14px;text-align:center}
+
+    form{display:grid;gap:12px}
+    input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(148,163,184,.25);background:rgba(148,163,184,.07);color:var(--text)}
+    input:focus, textarea:focus{outline:3px solid var(--ring);outline-offset:2px}
+
+    .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;display:inline-block;padding:2px 8px;border-radius:8px;border:1px solid rgba(148,163,184,.3);background:rgba(148,163,184,.1);font-size:12px}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .menu{display:none}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden>TC</span>
+        <span>Technical Content Intern</span>
+      </a>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#samples">Writing</a>
+        <a href="#docs">Docs</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero" aria-label="Hero">
+      <div class="card">
+        <h1>Hi, I'm <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Your Name</span> — I turn complex tech into clear, helpful content.</h1>
+        <p>I write tutorials, API guides, and product docs that developers actually enjoy. I also prototype small demos so code and docs stay in sync.</p>
+        <div class="actions">
+          <a class="btn" href="#samples">View Writing Samples</a>
+          <a class="pill" href="#resume">Download Résumé ▸</a>
+        </div>
+        <div class="stat">
+          <div class="tile"><strong>40+ </strong><span class="muted">Articles & Tutorials</span></div>
+          <div class="tile"><strong>12 </strong><span class="muted">Doc Pages Shipped</span></div>
+          <div class="tile"><strong>3 </strong><span class="muted">Open‑source Guides</span></div>
+        </div>
+      </div>
+      <div class="tile">
+        <h3>Focus Areas</h3>
+        <div class="tags">
+          <span class="tag">API Docs</span>
+          <span class="tag">How‑to Guides</span>
+          <span class="tag">SDK Tutorials</span>
+          <span class="tag">Release Notes</span>
+          <span class="tag">Diagrams</span>
+          <span class="tag">Code Snippets</span>
+          <span class="tag">SEO</span>
+          <span class="tag">DevRel</span>
+        </div>
+        <p style="margin-top:12px;color:var(--muted)">Tooling I like: Markdown, Docusaurus, Sphinx, Git/GitHub, VS Code, Mermaid, Postman, Swagger/OpenAPI.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="grid-2">
+        <div class="tile">
+          <h3>Who I am</h3>
+          <p>I’m a budding technical content writer who enjoys pairing code with narrative. My sweet spot is building small examples, then documenting what matters: prerequisites, steps, pitfalls, and verification.</p>
+          <div class="tags" aria-label="Preferred stacks">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">REST & GraphQL</span>
+          </div>
+        </div>
+        <div class="tile">
+          <h3>What I bring</h3>
+          <ul>
+            <li>Reader‑first structure (task‑based docs, progressive disclosure)</li>
+            <li>Reproducible examples with copy‑paste ready commands</li>
+            <li>Consistent terminology & style guides (Google/Microsoft)</li>
+            <li>Version control and PR reviews for docs like code</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="tile">
+          <h3>Documentation</h3>
+          <p>Task, concept, and reference docs; API guides; changelogs; migration notes.</p>
+          <div class="tags">
+            <span class="tag">Docusaurus</span>
+            <span class="tag">Sphinx</span>
+            <span class="tag">MkDocs</span>
+            <span class="tag">OpenAPI</span>
+          </div>
+        </div>
+        <div class="tile">
+          <h3>Tutorials</h3>
+          <p>Step‑by‑step walkthroughs with prerequisites, checkpoints, and sample repos.</p>
+          <div class="tags">
+            <span class="tag">Code Snippets</span>
+            <span class="tag">Diagrams</span>
+            <span class="tag">Examples</span>
+          </div>
+        </div>
+        <div class="tile">
+          <h3>Editorial</h3>
+          <p>Style, tone, and voice; SEO; headings and information architecture.</p>
+          <div class="tags">
+            <span class="tag">Copyedit</span>
+            <span class="tag">Proofread</span>
+            <span class="tag">Style Guides</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="samples">
+      <h2>Writing Samples</h2>
+      <div class="grid">
+        <article class="tile">
+          <h3>Build a REST API Client in Python</h3>
+          <p>A beginner‑friendly guide to requests, pagination, retries, and error handling.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">REST</span><span class="tag">Beginner</span></div>
+          <p style="margin-top:10px"><a class="pill" href="#">Read sample ▸</a></p>
+        </article>
+        <article class="tile">
+          <h3>Documenting Your First OpenAPI Spec</h3>
+          <p>From endpoints to schemas—how to structure reference docs developers trust.</p>
+          <div class="tags"><span class="tag">OpenAPI</span><span class="tag">Docs</span></div>
+          <p style="margin-top:10px"><a class="pill" href="#">Read sample ▸</a></p>
+        </article>
+        <article class="tile">
+          <h3>CI for Docs: Preview on Every PR</h3>
+          <p>Set up branch previews so reviewers see docs rendered before merging.</p>
+          <div class="tags"><span class="tag">GitHub Actions</span><span class="tag">Docs</span></div>
+          <p style="margin-top:10px"><a class="pill" href="#">Read sample ▸</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="docs">
+      <h2>Mini Docs (Sample)</h2>
+      <div class="grid-2">
+        <article class="tile">
+          <h3>Quickstart: CLI Install</h3>
+          <ol>
+            <li>Install: <span class="kbd">curl -fsSL example.sh | bash</span></li>
+            <li>Verify: <span class="kbd">tool --version</span></li>
+            <li>Login: <span class="kbd">tool auth login</span></li>
+          </ol>
+        </article>
+        <article class="tile">
+          <h3>API: Create Resource</h3>
+<pre aria-label="API example"><code>POST /v1/resources
+Authorization: Bearer &lt;token&gt;
+Content-Type: application/json
+{
+  "name": "demo",
+  "plan": "free"
+}
+</code></pre>
+        </article>
+      </div>
+      <div class="list" style="margin-top:16px">
+        <a href="#">
+          <span>Style Guide (voice, tense, terminology)</span>
+          <span aria-hidden>▸</span>
+        </a>
+        <a href="#">
+          <span>Glossary (common terms)</span>
+          <span aria-hidden>▸</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>Résumé</h2>
+      <div class="tile">
+        <p>Download a PDF résumé tailored for technical content roles.</p>
+        <a class="btn" href="#">Download PDF</a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid-2">
+        <div class="tile">
+          <form name="contact" method="post" action="mailto:your.email@example.com" enctype="text/plain">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="5" placeholder="Tell me about the role…" required></textarea>
+            </label>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+        <div class="tile">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+          <p style="color:var(--muted)">Prefer email? <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Your Name — Technical Content Intern</p>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Optional: Structured data for richer search results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "jobTitle": "Technical Content Writer (Intern)",
+    "email": "your.email@example.com",
+    "url": "https://example.com",
+    "sameAs": ["https://github.com/yourhandle", "https://www.linkedin.com/in/yourhandle/"]
+  }
+  </script>
+</body>
+</html>
